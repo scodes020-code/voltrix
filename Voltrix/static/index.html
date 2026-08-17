@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Voltrix — EV Battery Intelligence</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ================================================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                V
+            </div>
+
+            <div>
+
+                <h1>Voltrix</h1>
+
+                <span>
+                    EV Battery Intelligence
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="nav-item active">
+
+                <span>▣</span>
+
+                Battery Analysis
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="sampleButton"
+            >
+
+                <span>⚡</span>
+
+                Load Sample
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                id="resetButton"
+            >
+
+                <span>↻</span>
+
+                Reset
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="model-status">
+
+                <span class="status-dot"></span>
+
+                Model Online
+
+            </div>
+
+            <p>
+                Voltrix Neural Network v2
+            </p>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================================================= -->
+    <!-- MAIN -->
+    <!-- ================================================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    BATTERY INTELLIGENCE
+                </p>
+
+                <h2>
+                    EV Battery Health Analysis
+                </h2>
+
+                <p class="subtitle">
+                    Evaluate battery failure risk using
+                    vehicle operating and battery-health data.
+                </p>
+
+            </div>
+
+
+            <div class="online-pill">
+
+                <span></span>
+
+                System Online
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================================================= -->
+        <!-- DASHBOARD -->
+        <!-- ================================================= -->
+
+        <div class="dashboard">
+
+
+            <!-- INPUT CARD -->
+
+            <section class="card input-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Battery & Usage Data
+                            </h3>
+
+                            <p>
+                                Enter the current battery measurements.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BATTERY CONDITION -->
+
+                <div class="section">
+
+                    <h4>
+                        Battery Condition
+                    </h4>
+
+
+                    <div class="form-grid">
+
+                        <label>
+
+                            Battery capacity (kWh)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="battery_capacity_kwh"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Battery health (%)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="battery_health_percent"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            State of charge (%)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="state_of_charge"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            State of health (%)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="state_of_health"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Remaining capacity
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="remaining_capacity"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Capacity loss (%)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="capacity_loss_percent"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Depth of discharge
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="depth_of_discharge"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Cycle count
+
+                            <input
+                                type="number"
+                                step="1"
+                                id="cycle_count"
+                            >
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ELECTRICAL -->
+
+                <div class="section">
+
+                    <h4>
+                        Electrical Measurements
+                    </h4>
+
+
+                    <div class="form-grid">
+
+                        <label>
+
+                            Average cell voltage
+
+                            <input
+                                type="number"
+                                step="0.0001"
+                                id="cell_voltage_avg"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Cell voltage deviation
+
+                            <input
+                                type="number"
+                                step="0.0001"
+                                id="cell_voltage_std"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Pack voltage
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="pack_voltage"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Internal resistance
+
+                            <input
+                                type="number"
+                                step="0.0001"
+                                id="internal_resistance"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Charge efficiency (%)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="charge_efficiency"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Discharge efficiency (%)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="discharge_efficiency"
+                            >
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TEMPERATURE -->
+
+                <div class="section">
+
+                    <h4>
+                        Thermal Condition
+                    </h4>
+
+
+                    <div class="form-grid">
+
+                        <label>
+
+                            Average cell temperature (°C)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="cell_temperature_avg"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Maximum cell temperature (°C)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="cell_temperature_max"
+                            >
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DRIVING / CHARGING -->
+
+                <div class="section">
+
+                    <h4>
+                        Charging & Driving
+                    </h4>
+
+
+                    <div class="form-grid">
+
+                        <label>
+
+                            Charging cycles last month
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="charging_cycles_last_month"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Fast charge ratio
+
+                            <input
+                                type="number"
+                                step="0.001"
+                                id="fast_charge_ratio"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Overcharge events
+
+                            <input
+                                type="number"
+                                step="1"
+                                id="overcharge_events"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Aggressive acceleration score
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="aggressive_acceleration_score"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Hard braking score
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="hard_braking_score"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Odometer (km)
+
+                            <input
+                                type="number"
+                                step="1"
+                                id="odometer_km"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            Vehicle age (years)
+
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="vehicle_age_years"
+                            >
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FAULTS -->
+
+                <div class="section">
+
+                    <h4>
+                        Fault Indicators
+                    </h4>
+
+
+                    <div class="form-grid">
+
+                        <label>
+
+                            Sensor fault count
+
+                            <input
+                                type="number"
+                                step="1"
+                                id="sensor_fault_count"
+                            >
+
+                        </label>
+
+
+                        <label>
+
+                            BMS warning count
+
+                            <input
+                                type="number"
+                                step="1"
+                                id="BMS_warning_count"
+                            >
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ENGINEERED FEATURES -->
+
+                <div class="section">
+
+                    <h4>
+                        Voltrix Derived Indicators
+                    </h4>
+
+
+                    <div class="derived-grid">
+
+                        <div class="derived-box">
+
+                            <span>
+                                Charge Stress Index
+                            </span>
+
+                            <strong id="charge_stress_display">
+                                0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="derived-box">
+
+                            <span>
+                                Usage Intensity
+                            </span>
+
+                            <strong id="usage_intensity_display">
+                                0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <p class="helper">
+                        These two indicators are calculated automatically
+                        from the values above, matching the feature
+                        engineering used by Voltrix v2.
+                    </p>
+
+                </div>
+
+
+
+                <button
+                    id="analyzeButton"
+                    class="analyze-button"
+                >
+
+                    Analyze Battery
+
+                    <span>→</span>
+
+                </button>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
+            <!-- RESULTS -->
+            <!-- ================================================= -->
+
+            <section class="results-column">
+
+
+                <div class="card result-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-number">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Prediction
+                                </h3>
+
+                                <p>
+                                    Voltrix model assessment
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="resultEmpty"
+                        class="result-empty"
+                    >
+
+                        <div class="pulse-icon">
+                            V
+                        </div>
+
+                        <h3>
+                            Ready for analysis
+                        </h3>
+
+                        <p>
+                            Enter the battery information and
+                            run an analysis to see the predicted
+                            failure risk.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        id="resultContent"
+                        class="result-content hidden"
+                    >
+
+                        <div
+                            id="riskBadge"
+                            class="risk-badge"
+                        >
+                            LOW RISK
+                        </div>
+
+
+                        <div class="probability">
+
+                            <span>
+                                Failure probability
+                            </span>
+
+                            <strong id="probability">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="meter">
+
+                            <div
+                                id="meterFill"
+                                class="meter-fill"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="prediction-message">
+
+                            <strong id="predictionTitle">
+                                Battery appears healthy
+                            </strong>
+
+                            <p id="predictionText">
+                                Voltrix predicts a low probability
+                                of battery failure.
+                            </p>
+
+                        </div>
+
+
+                        <div class="result-stats">
+
+                            <div>
+
+                                <span>
+                                    Model
+                                </span>
+
+                                <strong>
+                                    NN v2
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Threshold
+                                </span>
+
+                                <strong>
+                                    30%
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- INFO CARD -->
+
+                <div class="card info-card">
+
+                    <h3>
+                        How Voltrix works
+                    </h3>
+
+                    <div class="process">
+
+                        <div>
+
+                            <span>01</span>
+
+                            <p>
+                                Battery measurements
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <span>02</span>
+
+                            <p>
+                                Feature engineering
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <span>03</span>
+
+                            <p>
+                                Robust scaling
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <span>04</span>
+
+                            <p>
+                                Neural network prediction
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+
+        <footer>
+
+            Voltrix is an analytical prediction system.
+            Predictions should support, not replace,
+            professional battery inspection and diagnostics.
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="/static/app.js"></script>
+
+</body>
+
+</html>

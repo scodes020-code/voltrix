@@ -1,0 +1,33 @@
+{
+    "features": [
+        "battery_capacity_kwh",
+        "odometer_km",
+        "vehicle_age_years",
+        "cycle_count",
+        "battery_health_percent",
+        "state_of_charge",
+        "depth_of_discharge",
+        "state_of_health",
+        "cell_voltage_avg",
+        "cell_voltage_std",
+        "pack_voltage",
+        "cell_temperature_avg",
+        "cell_temperature_max",
+        "internal_resistance",
+        "charge_efficiency",
+        "discharge_efficiency",
+        "remaining_capacity",
+        "capacity_loss_percent",
+        "charging_cycles_last_month",
+        "fast_charge_ratio",
+        "overcharge_events",
+        "aggressive_acceleration_score",
+        "hard_braking_score",
+        "sensor_fault_count",
+        "BMS_warning_count",
+        "charge_stress_index",
+        "usage_intensity"
+    ],
+    "target": "battery_failure",
+    "threshold": 0.3
+}
